@@ -3,6 +3,10 @@
     <string name="menu">Главная</string>
     <string name="favorite">Избранные</string>
     <string name="settings">Настройки</string>
-    <string name="foryou">Для вас</string>
+    <string name="foryou">Бизнес</string>
     <string name="following">Подписки</string>
+    <string name="business">Бизнес</string>
+    <string name="sports">Спорт</string>
+    <string name="technology">Технология</string>
+    <string name="content">Lorem ipsum ssssssssssssssssssssssssssssssss</string>
 </resources>

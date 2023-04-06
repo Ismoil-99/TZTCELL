@@ -6,7 +6,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.tztcell.R
 import com.example.tztcell.databinding.FragmentFlowMainLayoutBinding
 import com.example.tztcell.presentation.base.BaseFlowFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFlowFragment: BaseFlowFragment(R.layout.fragment_flow_main_layout,R.id.fragment_container_view){
     private val binding by viewBinding(FragmentFlowMainLayoutBinding::bind)
 
