@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TZTCELL</string>
+    <string name="menu">Главная</string>
+    <string name="favorite">Избранные</string>
+    <string name="settings">Настройки</string>
+    <string name="foryou">Для вас</string>
+    <string name="following">Подписки</string>
 </resources>
