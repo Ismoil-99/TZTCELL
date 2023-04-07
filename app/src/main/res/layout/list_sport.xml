@@ -14,14 +14,14 @@
         android:orientation="vertical"
         >
         <ImageView
-            android:id="@+id/news_image_business"
+            android:id="@+id/news_image_sport"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_margin="5dp"
             />
 
         <TextView
-            android:id="@+id/header_title_business"
+            android:id="@+id/header_title_sport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="@string/favorite"
@@ -31,7 +31,7 @@
             android:textSize="20sp"
             />
         <TextView
-            android:id="@+id/content_business"
+            android:id="@+id/content_sport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="@string/content"

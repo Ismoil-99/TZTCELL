@@ -13,4 +13,19 @@ interface BaseApiService {
         @Query("country") country:String,
         @Query("category") category:String
     ):Response<News>
+
+    @GET("v2/top-headlines")
+    suspend fun getNewsTechnology(
+        @Query("apiKey") apiKey:String,
+        @Query("country") country:String,
+        @Query("category") category:String
+    ):Response<News>
+    @GET("v2/top-headlines")
+    suspend fun getNewsSport(
+        @Query("apiKey") apiKey:String,
+        @Query("country") country:String,
+        @Query("category") category:String
+    ):Response<News>
+
+
 }

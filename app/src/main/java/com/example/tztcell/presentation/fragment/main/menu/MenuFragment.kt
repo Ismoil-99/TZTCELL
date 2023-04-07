@@ -19,8 +19,8 @@ class MenuFragment:BaseFragment<FragmentMenuBinding>(R.layout.fragment_menu) {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when(position){
                 0 -> tab.text = resources.getString(R.string.business)
-                1 -> tab.text = resources.getString(R.string.sports)
-                2 -> tab.text = resources.getString(R.string.technology)
+                1 -> tab.text = resources.getString(R.string.technology)
+                2 -> tab.text = resources.getString(R.string.sports)
             }
         }.attach()
     }

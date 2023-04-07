@@ -1,4 +1,4 @@
-package com.example.tztcell.presentation.fragment.main.menu.business
+package com.example.tztcell.presentation.fragment.main.menu.technology
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +12,11 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.example.tztcell.R
 import com.example.tztcell.databinding.ListBusinessBinding
+import com.example.tztcell.databinding.ListSportBinding
+import com.example.tztcell.databinding.ListTechnologyBinding
 import com.example.tztcell.model.data.Articles
 
-class BusinessAdapter(): ListAdapter<Articles, BusinessAdapter.BusinessViewHolder>(FinishDiffUtil()){
+class TechnologyAdapter(): ListAdapter<Articles, TechnologyAdapter.BusinessViewHolder>(FinishDiffUtil()){
 
     class FinishDiffUtil : DiffUtil.ItemCallback<Articles>(){
         override fun areItemsTheSame(oldItem: Articles, newItem: Articles): Boolean {
@@ -26,17 +28,17 @@ class BusinessAdapter(): ListAdapter<Articles, BusinessAdapter.BusinessViewHolde
         }
     }
     inner class BusinessViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ListBusinessBinding.bind(itemView)
+        private val binding = ListTechnologyBinding.bind(itemView)
 
         fun bind(test:Articles ) {
             binding.apply {
-                contentBusiness.text = test.content
-                headerTitleBusiness.text = test.title
+                contentTechnology.text = test.content
+                headerTitleTechnology.text = test.title
                 Glide.with(binding.root.context)
                     .load(test.urlToImage)
                     .centerCrop()
                     .transform( CenterCrop(), RoundedCorners(25))
-                    .into(binding.newsImageBusiness);
+                    .into(binding.newsImageTechnology);
                     }
         }
     }
@@ -45,7 +47,7 @@ class BusinessAdapter(): ListAdapter<Articles, BusinessAdapter.BusinessViewHolde
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusinessViewHolder =
         BusinessViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_business, parent, false)
+                .inflate(R.layout.list_technology, parent, false)
         )
 
     override fun onBindViewHolder(holder: BusinessViewHolder, position: Int) {
