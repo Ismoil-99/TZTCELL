@@ -3,6 +3,7 @@ package com.example.tztcell.model.db.module
 import android.app.Application
 import com.example.tztcell.model.db.database.NewsDatabase
 import com.example.tztcell.model.db.modelsdb.NewsSportDb
+import com.example.tztcell.model.db.query.NewsFavoriteQuery
 import com.example.tztcell.model.db.query.NewsQuery
 import com.example.tztcell.model.db.query.NewsQuerySport
 import com.example.tztcell.model.db.query.NewsQueryTechnology
@@ -34,5 +35,11 @@ class AppModule {
     @Singleton
     fun getAppDaoTechnology(appDatabase: NewsDatabase): NewsQueryTechnology {
         return appDatabase.listNewsTechnology()
+    }
+
+    @Provides
+    @Singleton
+    fun getAppDaoFavorite(appDatabase: NewsDatabase): NewsFavoriteQuery {
+        return appDatabase.listNewsFavorite()
     }
 }

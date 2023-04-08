@@ -8,6 +8,7 @@ import com.example.tztcell.R
 import com.example.tztcell.databinding.FragmentSportBinding
 import com.example.tztcell.presentation.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -20,7 +21,11 @@ class SportFragment:BaseFragment<FragmentSportBinding>(R.layout.fragment_sport) 
         binding.recyclerView.apply {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            adapter = SportAdapter()
+            adapter = SportAdapter{
+                lifecycleScope.launch (Dispatchers.IO){
+                    viewModel.saveFavoriteNews(it)
+                }
+            }
         }
         lifecycleScope.launch {
             viewModel.getNewsSport("f1a05bb7b5a44932b7859a0f75e8446d","us","sport").observe(viewLifecycleOwner){

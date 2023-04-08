@@ -1,4 +1,4 @@
-package com.example.tztcell.presentation.fragment.main.menu.technology
+package com.example.tztcell.presentation.fragment.main.favorite
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,40 +9,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.example.tztcell.R
-import com.example.tztcell.databinding.ListTechnologyBinding
-import com.example.tztcell.model.db.modelsdb.NewsDb
+import com.example.tztcell.databinding.ListFavoriteBinding
 import com.example.tztcell.model.db.modelsdb.NewsFavorite
-import com.example.tztcell.model.db.modelsdb.NewsTechnologyDb
 
-class TechnologyAdapter(
-    private val onSaveFavoriteNews: (NewsFavorite) -> Unit
-): ListAdapter<NewsTechnologyDb, TechnologyAdapter.BusinessViewHolder>(FinishDiffUtil()){
+class AdapterFavorite(): ListAdapter<NewsFavorite, AdapterFavorite.BusinessViewHolder>(FinishDiffUtil()){
 
-    class FinishDiffUtil : DiffUtil.ItemCallback<NewsTechnologyDb>(){
-        override fun areItemsTheSame(oldItem: NewsTechnologyDb, newItem: NewsTechnologyDb): Boolean {
+    class FinishDiffUtil : DiffUtil.ItemCallback<NewsFavorite>(){
+        override fun areItemsTheSame(oldItem: NewsFavorite, newItem: NewsFavorite): Boolean {
             return oldItem.title == newItem.title
         }
 
-        override fun areContentsTheSame(oldItem: NewsTechnologyDb, newItem: NewsTechnologyDb): Boolean {
+        override fun areContentsTheSame(oldItem: NewsFavorite, newItem: NewsFavorite): Boolean {
             return oldItem == newItem
         }
     }
     inner class BusinessViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ListTechnologyBinding.bind(itemView)
+        private val binding = ListFavoriteBinding.bind(itemView)
 
-        fun bind(test:NewsTechnologyDb ) {
+        fun bind(test: NewsFavorite) {
             binding.apply {
-                onsaveNewsFavorite.setOnClickListener {
-                    val convert = NewsFavorite(
-                        0,
-                        test.title,
-                        test.urlToImage,
-                        test.content
-                    )
-                    onSaveFavoriteNews.invoke(convert)
-                }
                 contentTechnology.text = test.content
                 headerTitleTechnology.text = test.title
                 Glide.with(binding.root.context)
@@ -50,7 +36,7 @@ class TechnologyAdapter(
                     .centerCrop()
                     .transform( CenterCrop(), RoundedCorners(25))
                     .into(binding.newsImageTechnology);
-                    }
+            }
         }
     }
 
@@ -58,7 +44,7 @@ class TechnologyAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusinessViewHolder =
         BusinessViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_technology, parent, false)
+                .inflate(R.layout.list_favorite, parent, false)
         )
 
     override fun onBindViewHolder(holder: BusinessViewHolder, position: Int) {

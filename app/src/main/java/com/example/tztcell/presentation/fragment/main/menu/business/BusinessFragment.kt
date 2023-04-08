@@ -9,6 +9,7 @@ import com.example.tztcell.R
 import com.example.tztcell.databinding.FragmentBusinessBinding
 import com.example.tztcell.presentation.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -22,12 +23,16 @@ class BusinessFragment:BaseFragment<FragmentBusinessBinding>(R.layout.fragment_b
 
        binding.recyclerView.apply {
            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-           adapter = BusinessAdapter()
+           adapter = BusinessAdapter{
+               lifecycleScope.launch(Dispatchers.IO) {
+                   viewModel.saveFavoriteNews(it)
+                   Log.d("value","$it")
+               }
+           }
        }
         lifecycleScope.launch {
             viewModel.getNewsBusiness("f1a05bb7b5a44932b7859a0f75e8446d","us","business").observe(viewLifecycleOwner) {
                 (binding.recyclerView.adapter as BusinessAdapter).submitList(it.data)
-                Log.d("value","${it.error}")
             }
             }
         }

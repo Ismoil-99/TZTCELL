@@ -10,6 +10,7 @@ import com.example.tztcell.databinding.FragmentTechnologyBinding
 import com.example.tztcell.presentation.base.BaseFragment
 import com.example.tztcell.presentation.fragment.main.menu.sport.SportAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
@@ -23,7 +24,11 @@ class TechnologyFragment:BaseFragment<FragmentTechnologyBinding>(R.layout.fragme
         super.initialize()
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
-            adapter = TechnologyAdapter()
+            adapter = TechnologyAdapter{
+                lifecycleScope.launch(Dispatchers.IO){
+                    viewModel.saveFavoriteNews(it)
+                }
+            }
         }
         lifecycleScope.launch {
             viewModel.technoNews("f1a05bb7b5a44932b7859a0f75e8446d","us","technology").observe(viewLifecycleOwner){
