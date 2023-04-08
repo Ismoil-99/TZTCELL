@@ -1,112 +1,64 @@
 package com.example.tztcell.model.repositories
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import com.example.tztcell.model.Resource
-import com.example.tztcell.model.data.News
+import androidx.room.withTransaction
+import com.example.tztcell.model.db.database.NewsDatabase
+import com.example.tztcell.model.db.modelsdb.NewsDb
+import com.example.tztcell.model.db.modelsdb.NewsSportDb
 import com.example.tztcell.model.remote.apiservices.BaseApiService
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import retrofit2.HttpException
+import kotlinx.coroutines.delay
+import networkBoundResource
 import javax.inject.Inject
 
-class RepositoryImpl @Inject constructor (private val baseApiService: BaseApiService):RepositoryRequest {
+class RepositoryImpl @Inject constructor (private val baseApiService: BaseApiService,
+                                          private val newsDatabase: NewsDatabase){
+    private val newsDao = newsDatabase.listNews()
+    private val newDaoSport = newsDatabase.listNewsSport()
+    private val newsTechnology = newsDatabase.listNewsTechnology()
 
-    override fun getBusiness(key: String, country: String, category: String): Flow<Resource<News>> {
-        return flow {
-            emit(Resource.Loading())
-            try {
-                val response = baseApiService.getNewsBusiness(key,country,category)
-                if (response.isSuccessful) {
-                    if (response.code() == 200) {
-                        emit(Resource.Success(response.body()!!))
-                    } else {
-                        emit(
-                            Resource.Error(
-                                message = response.message() ?: response.code()
-                                    .toString()
-                            )
-                        )
-                    }
-                } else {
-                    emit(Resource.Error(message = "Error: ${response.code()}"))
-                }
-
-            }catch (e: HttpException){
-                Log.d("error2","${e.message}")
-
-            }catch (e: Throwable){
-                Log.d("error2","${e.message}")
-
-            }
-    }
-    }
-
-    override fun getTechnology(
-        key: String,
-        country: String,
-        category: String
-    ): Flow<Resource<News>> {
-        return flow {
-            emit(Resource.Loading())
-            try {
-                val response = baseApiService.getNewsTechnology(key,country,category)
-                if (response.isSuccessful) {
-                    if (response.code() == 200) {
-                        emit(Resource.Success(response.body()!!))
-                    } else {
-                        emit(
-                            Resource.Error(
-                                message = response.message() ?: response.code()
-                                    .toString()
-                            )
-                        )
-                    }
-                } else {
-                    emit(Resource.Error(message = "Error: ${response.code()}"))
-                    Log.d("error2","${response.code()}")
-                }
-
-            }catch (e: HttpException){
-                Log.d("error2","${e.message}")
-
-            }catch (e: Throwable){
-                Log.d("error2","${e.message}")
-
+    fun getNewsBusiness(key: String, country: String, category: String) = networkBoundResource(
+        query = {
+            newsDao.getNews()
+        },
+        fetch = {
+            delay(2000)
+            baseApiService.getNewsBusiness(key, country, category).articles
+        },
+        saveFetchResult = { CarList ->
+            newsDatabase.withTransaction {
+                newsDao.deleteAllCars()
+                newsDao.insertNews(CarList)
             }
         }
-    }
+    )
 
-    override fun getSport(key: String, country: String, category: String): Flow<Resource<News>> {
-        return flow {
-            emit(Resource.Loading())
-            try {
-                val response = baseApiService.getNewsSport(key,country,category)
-                if (response.isSuccessful) {
-                    if (response.code() == 200) {
-                        emit(Resource.Success(response.body()!!))
-                        //Log.d("error2","${response.code()}")
-                    } else {
-                        emit(
-                            Resource.Error(
-                                message = response.message() ?: response.code()
-                                    .toString()
-                            )
-                        )
-                    }
-                } else {
-                    emit(Resource.Error(message = "Error: ${response.code()}"))
-                    Log.d("error2","${response.code()}")
-                }
-
-            }catch (e: HttpException){
-                Log.d("error2","${e.message}")
-
-            }catch (e: Throwable){
-                Log.d("error2","${e.message}")
-
+    fun getNewsSport(key: String, country: String, category: String) = networkBoundResource(
+        query = {
+            newDaoSport.getNewsSport()
+        },
+        fetch = {
+            delay(2000)
+            baseApiService.getNewsSport(key, country, category).articles
+        },
+        saveFetchResult = { CarList ->
+            newsDatabase.withTransaction {
+                newDaoSport.deleteAllSport()
+                newDaoSport.insertNewsSport(CarList)
             }
         }
-    }
-
+    )
+    fun getNewsTechnology(key: String, country: String, category: String) = networkBoundResource(
+        query = {
+            newsTechnology.getNewsTechnology()
+        },
+        fetch = {
+            delay(2000)
+            baseApiService.getNewsTechnology(key, country, category).articles
+        },
+        saveFetchResult = { CarList ->
+            newsDatabase.withTransaction {
+                newsTechnology.deleteAllTechnology()
+                newsTechnology.insertNewsTechnology(CarList)
+            }
+        }
+    )
 }

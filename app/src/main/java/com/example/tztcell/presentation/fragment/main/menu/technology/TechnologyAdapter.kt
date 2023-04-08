@@ -11,26 +11,25 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.example.tztcell.R
-import com.example.tztcell.databinding.ListBusinessBinding
-import com.example.tztcell.databinding.ListSportBinding
 import com.example.tztcell.databinding.ListTechnologyBinding
-import com.example.tztcell.model.data.Articles
+import com.example.tztcell.model.db.modelsdb.NewsDb
+import com.example.tztcell.model.db.modelsdb.NewsTechnologyDb
 
-class TechnologyAdapter(): ListAdapter<Articles, TechnologyAdapter.BusinessViewHolder>(FinishDiffUtil()){
+class TechnologyAdapter(): ListAdapter<NewsTechnologyDb, TechnologyAdapter.BusinessViewHolder>(FinishDiffUtil()){
 
-    class FinishDiffUtil : DiffUtil.ItemCallback<Articles>(){
-        override fun areItemsTheSame(oldItem: Articles, newItem: Articles): Boolean {
+    class FinishDiffUtil : DiffUtil.ItemCallback<NewsTechnologyDb>(){
+        override fun areItemsTheSame(oldItem: NewsTechnologyDb, newItem: NewsTechnologyDb): Boolean {
             return oldItem.title == newItem.title
         }
 
-        override fun areContentsTheSame(oldItem: Articles, newItem: Articles): Boolean {
+        override fun areContentsTheSame(oldItem: NewsTechnologyDb, newItem: NewsTechnologyDb): Boolean {
             return oldItem == newItem
         }
     }
     inner class BusinessViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ListTechnologyBinding.bind(itemView)
 
-        fun bind(test:Articles ) {
+        fun bind(test:NewsTechnologyDb ) {
             binding.apply {
                 contentTechnology.text = test.content
                 headerTitleTechnology.text = test.title

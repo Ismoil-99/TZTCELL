@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RetrofitClient {
     private val retrofitClient: Retrofit = Retrofit.Builder()
-        .baseUrl("https://newsapi.org")
+        .baseUrl("https://newsapi.org/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

@@ -9,26 +9,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.example.tztcell.R
 import com.example.tztcell.databinding.ListBusinessBinding
-import com.example.tztcell.model.data.Articles
+import com.example.tztcell.model.db.modelsdb.NewsDb
 
-class BusinessAdapter(): ListAdapter<Articles, BusinessAdapter.BusinessViewHolder>(FinishDiffUtil()){
+class BusinessAdapter(): ListAdapter<NewsDb, BusinessAdapter.BusinessViewHolder>(FinishDiffUtil()){
 
-    class FinishDiffUtil : DiffUtil.ItemCallback<Articles>(){
-        override fun areItemsTheSame(oldItem: Articles, newItem: Articles): Boolean {
+    class FinishDiffUtil : DiffUtil.ItemCallback<NewsDb>(){
+        override fun areItemsTheSame(oldItem: NewsDb, newItem: NewsDb): Boolean {
             return oldItem.title == newItem.title
         }
 
-        override fun areContentsTheSame(oldItem: Articles, newItem: Articles): Boolean {
+        override fun areContentsTheSame(oldItem: NewsDb, newItem: NewsDb): Boolean {
             return oldItem == newItem
         }
     }
     inner class BusinessViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ListBusinessBinding.bind(itemView)
 
-        fun bind(test:Articles ) {
+        fun bind(test:NewsDb ) {
             binding.apply {
                 contentBusiness.text = test.content
                 headerTitleBusiness.text = test.title
