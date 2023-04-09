@@ -1,6 +1,5 @@
 package com.example.tztcell.presentation.fragment.main.menu.sport
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,8 +38,8 @@ class SportAdapter(
                         0,
                         test.title,
                         test.urlToImage,
-                        test.content
-                    )
+                        test.content,
+                    test.publishedAt)
                     onSaveFavoriteNews.invoke(convert)
                 }
                 contentSport.text = test.content
@@ -50,7 +49,9 @@ class SportAdapter(
                     .centerCrop()
                     .transform( CenterCrop(),RoundedCorners(25))
                     .into(binding.newsImageSport);
-                    }
+                timePublish.text = test.publishedAt
+            }
+
         }
     }
 

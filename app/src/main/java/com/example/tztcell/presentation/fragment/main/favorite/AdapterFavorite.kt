@@ -36,6 +36,7 @@ class AdapterFavorite(): ListAdapter<NewsFavorite, AdapterFavorite.BusinessViewH
                     .centerCrop()
                     .transform( CenterCrop(), RoundedCorners(25))
                     .into(binding.newsImageTechnology);
+                timePublish.text = test.publishedAt
             }
         }
     }

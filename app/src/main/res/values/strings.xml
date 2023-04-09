@@ -1,12 +1,21 @@
 <resources>
     <string name="app_name">TZTCELL</string>
-    <string name="menu">Главная</string>
-    <string name="favorite">Избранные</string>
-    <string name="settings">Настройки</string>
-    <string name="foryou">Бизнес</string>
-    <string name="following">Подписки</string>
+    <string name="menu" translatable="false">Главная</string>
+    <string name="favorite" translatable="false">Избранные</string>
+    <string name="foryou" translatable="false">Бизнес</string>
+    <string name="following" translatable="false">Подписки</string>
     <string name="business">Бизнес</string>
     <string name="sports">Спорт</string>
     <string name="technology">Технология</string>
     <string name="content">Lorem ipsum ssssssssssssssssssssssssssssssss</string>
+    <string name="news_name" translatable="false">Новости</string>
+    <string name="light" translatable="false">Светлый</string>
+    <string name="dark" translatable="false">Темный</string>
+    <string name="ru">Русский</string>
+    <string name="en">Английский</string>
+    <string name="tjk">Таджикский</string>
+    <string name="fr">Французкий</string>
+    <string name="ca">Канадский</string>
+    <string name="usa">Американский</string>
+    <string name="settings" translatable="false">Настройки</string>
 </resources>

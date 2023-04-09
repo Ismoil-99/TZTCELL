@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class NewsSportDb(
     @PrimaryKey val title:String,
     val urlToImage:String?,
-    val content:String?
+    val content:String?,
+    val publishedAt:String?
 )

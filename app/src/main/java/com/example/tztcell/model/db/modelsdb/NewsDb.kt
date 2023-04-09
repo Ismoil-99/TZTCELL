@@ -8,5 +8,6 @@ import com.google.gson.annotations.SerializedName
 data class NewsDb(
     @PrimaryKey val title:String,
     val urlToImage:String?,
-    val content:String?
+    val content:String?,
+    val publishedAt:String?
 )

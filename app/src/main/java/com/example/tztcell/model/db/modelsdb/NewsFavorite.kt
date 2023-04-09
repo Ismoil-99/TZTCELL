@@ -9,5 +9,6 @@ data class NewsFavorite(
     var id:Int,
     val title:String,
     val urlToImage:String?,
-    val content:String?
+    val content:String?,
+    val publishedAt:String?
 )

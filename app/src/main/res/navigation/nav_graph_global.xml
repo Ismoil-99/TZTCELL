@@ -6,7 +6,11 @@
     <fragment
         android:id="@+id/mainFlowFragment"
         android:name="com.example.tztcell.presentation.fragment.main.MainFlowFragment"
-        android:label="MainFlowFragment"
         tools:layout="@layout/fragment_flow_main_layout"
+        />
+    <action
+        android:id="@+id/to_flow_main"
+        app:destination="@+id/mainFlowFragment"
+        app:popUpToInclusive="true"
         />
 </navigation>

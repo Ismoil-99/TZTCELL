@@ -8,19 +8,50 @@
     <fragment
         android:id="@+id/menu"
         android:name="com.example.tztcell.presentation.fragment.main.menu.MenuFragment"
-        android:label="MenuFragment"
+        android:label="@string/news_name"
         tools:layout="@layout/fragment_menu"
         />
     <fragment
         android:id="@+id/favorite"
         android:name="com.example.tztcell.presentation.fragment.main.favorite.FavoriteFragment"
-        android:label="FavoriteFragment"
+        android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite"
         />
     <fragment
         android:id="@+id/settings"
         android:name="com.example.tztcell.presentation.fragment.main.settings.SettingsFragment"
-        android:label="SettingsFragment"
+        android:label="@string/settings"
         tools:layout="@layout/fragment_settings"
+        />
+    <dialog
+        android:id="@+id/languageNewsBottomSheetFragment"
+        android:name="com.example.tztcell.presentation.fragment.main.settings.LanguageNewsBottomSheetFragment"
+        android:label="LanguageNewsBottomSheetFragment"
+        tools:layout="@layout/fragment_change_language_bottomsheet"
+        />
+    <dialog
+        android:id="@+id/themeBottomSheetFragment"
+        android:name="com.example.tztcell.presentation.fragment.main.settings.ThemeBottomSheetFragment"
+        android:label="ThemeBottomSheetFragment"
+        tools:layout="@layout/fragment_change_language_bottomsheet"
+        />
+    <dialog
+        android:id="@+id/changeLanguageBottomSheetFragment"
+        android:name="com.example.tztcell.presentation.fragment.main.settings.ChangeLanguageBottomSheetFragment"
+        android:label="ChangeLanguageBottomSheetFragment"
+        tools:layout="@layout/fragment_change_language_bottomsheet"
+        />
+
+    <action
+        android:id="@+id/to_languagenews"
+        app:destination="@+id/languageNewsBottomSheetFragment"
+        />
+    <action
+        android:id="@+id/to_languagesystem"
+        app:destination="@+id/changeLanguageBottomSheetFragment"
+        />
+    <action
+        android:id="@+id/to_themesystem"
+        app:destination="@+id/themeBottomSheetFragment"
         />
 </navigation>

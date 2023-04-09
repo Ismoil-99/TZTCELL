@@ -1,5 +1,6 @@
 package com.example.tztcell.presentation.fragment.main.menu.business
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,7 @@ class BusinessAdapter(
     inner class BusinessViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ListBusinessBinding.bind(itemView)
 
+        @SuppressLint("NotifyDataSetChanged")
         fun bind(test:NewsDb ) {
             binding.apply {
                 saveFavoriteNews.setOnClickListener {
@@ -38,10 +40,12 @@ class BusinessAdapter(
                         0,
                         test.title,
                         test.urlToImage,
-                        test.content
+                        test.content,
+                        test.publishedAt
                     )
-                    Log.d("value","$convert")
                     onSaveFavoriteNews.invoke(convert)
+                    notifyDataSetChanged()
+                    saveFavoriteNews.setImageResource(R.drawable.baseline_star_24)
                 }
                 contentBusiness.text = test.content
                 headerTitleBusiness.text = test.title
@@ -50,6 +54,7 @@ class BusinessAdapter(
                     .centerCrop()
                     .transform( CenterCrop(), RoundedCorners(25))
                     .into(binding.newsImageBusiness);
+                timePublish.text = test.publishedAt
             }
         }
     }

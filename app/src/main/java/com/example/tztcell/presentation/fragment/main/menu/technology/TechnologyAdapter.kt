@@ -39,7 +39,8 @@ class TechnologyAdapter(
                         0,
                         test.title,
                         test.urlToImage,
-                        test.content
+                        test.content,
+                        test.publishedAt
                     )
                     onSaveFavoriteNews.invoke(convert)
                 }
@@ -50,7 +51,8 @@ class TechnologyAdapter(
                     .centerCrop()
                     .transform( CenterCrop(), RoundedCorners(25))
                     .into(binding.newsImageTechnology);
-                    }
+                timePublish.text = test.publishedAt
+            }
         }
     }
 

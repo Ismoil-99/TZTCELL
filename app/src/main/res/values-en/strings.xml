@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TZTCELL</string>
+    <string name="menu">Home</string>
+    <string name="favorite">Favorites</string>
+    <string name="settings">Option</string>
+    <string name="foryou">Business</string>
+    <string name="following">Falowing</string>
+    <string name="sports">Sport</string>
+    <string name="news_name">News</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="technology">Technology</string>
+    <string name="business">Business</string>
+</resources>

@@ -48,5 +48,14 @@
             android:layout_margin="20dp"
             />
     </LinearLayout>
+    <TextView
+        android:id="@+id/time_publish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12.34.222"
+        android:textSize="13sp"
+        android:layout_gravity="bottom"
+        android:padding="20dp"
+        />
 
 </com.google.android.material.card.MaterialCardView>

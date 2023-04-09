@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TZTCELL</string>
+    <string name="menu">Асоси</string>
+    <string name="favorite">Дӯстдоштаҳо</string>
+    <string name="settings">Танзимот</string>
+    <string name="foryou">Тиҷорат</string>
+    <string name="following">Обунаҳо</string>
+    <string name="sports">Варзиш</string>
+    <string name="news_name">Ахбор</string>
+    <string name="light">Нурони</string>
+    <string name="dark">Торик</string>
+</resources>
