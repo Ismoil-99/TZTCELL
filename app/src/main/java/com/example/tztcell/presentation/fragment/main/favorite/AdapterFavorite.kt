@@ -13,7 +13,9 @@ import com.example.tztcell.R
 import com.example.tztcell.databinding.ListFavoriteBinding
 import com.example.tztcell.model.db.modelsdb.NewsFavorite
 
-class AdapterFavorite(): ListAdapter<NewsFavorite, AdapterFavorite.BusinessViewHolder>(FinishDiffUtil()){
+class AdapterFavorite(
+    private val onDeleteItem:(NewsFavorite) -> Unit
+): ListAdapter<NewsFavorite, AdapterFavorite.BusinessViewHolder>(FinishDiffUtil()){
 
     class FinishDiffUtil : DiffUtil.ItemCallback<NewsFavorite>(){
         override fun areItemsTheSame(oldItem: NewsFavorite, newItem: NewsFavorite): Boolean {
@@ -37,7 +39,13 @@ class AdapterFavorite(): ListAdapter<NewsFavorite, AdapterFavorite.BusinessViewH
                     .transform( CenterCrop(), RoundedCorners(25))
                     .into(binding.newsImageTechnology);
                 timePublish.text = test.publishedAt
+
+                deleteFavorite.setOnClickListener {
+                    onDeleteItem.invoke(test)
+                }
             }
+
+
         }
     }
 

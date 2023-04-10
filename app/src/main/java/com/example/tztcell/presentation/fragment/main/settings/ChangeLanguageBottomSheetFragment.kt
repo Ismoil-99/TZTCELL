@@ -5,19 +5,13 @@ import android.os.Build
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.tztcell.NewsApp
 import com.example.tztcell.R
 import com.example.tztcell.databinding.FragmentChangeLanguageBottomsheetBinding
 import com.example.tztcell.presentation.base.BaseBottomSheet
-import com.example.tztcell.presentation.extensions.activityNavController
-import com.example.tztcell.presentation.extensions.flowNavController
-import com.example.tztcell.presentation.extensions.navigateSafely
-import com.example.tztcell.presentation.extensions.overrideOnBackPressed
 import com.example.tztcell.utils.NAME_LANGUAGE
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -30,7 +24,35 @@ class ChangeLanguageBottomSheetFragment:BaseBottomSheet<FragmentChangeLanguageBo
 
     override fun initialize() {
         super.initialize()
-        lifecycleScope.launch{
+        when(NewsApp.sharedPreferences.getString(NAME_LANGUAGE,"")){
+            "ru" -> {
+                binding.apply {
+                    ru.setImageResource(R.drawable.baseline_star_24)
+                    tjk.setImageResource(R.drawable.baseline_star_outline_24)
+                    eng.setImageResource(R.drawable.baseline_star_outline_24)
+                }
+            }
+            "tg" -> {
+                binding.apply {
+                    ru.setImageResource(R.drawable.baseline_star_outline_24)
+                    tjk.setImageResource(R.drawable.baseline_star_24)
+                    eng.setImageResource(R.drawable.baseline_star_outline_24)
+                }
+            }
+            "en" -> {
+                binding.apply {
+                    ru.setImageResource(R.drawable.baseline_star_outline_24)
+                    tjk.setImageResource(R.drawable.baseline_star_outline_24)
+                    eng.setImageResource(R.drawable.baseline_star_24)
+                }
+            }
+            else -> {
+                binding.apply {
+                    ru.setImageResource(R.drawable.baseline_star_outline_24)
+                    tjk.setImageResource(R.drawable.baseline_star_outline_24)
+                    eng.setImageResource(R.drawable.baseline_star_outline_24)
+                }
+            }}
             binding.apply {
                 selectRu.setOnClickListener {
                     setLanguage("ru")
@@ -42,7 +64,6 @@ class ChangeLanguageBottomSheetFragment:BaseBottomSheet<FragmentChangeLanguageBo
                     setLanguage("tg")
                 }
             }
-        }
     }
     private fun setLanguage(language: String) {
         val saveLg = NewsApp.sharedPreferencesEditor.putString(NAME_LANGUAGE,language)

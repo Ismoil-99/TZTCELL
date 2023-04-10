@@ -37,18 +37,7 @@ class TechnologyFragment:BaseFragment<FragmentTechnologyBinding>(R.layout.fragme
         val newsLGChange =  NewsApp.sharedPreferences.getString(NAMELANGUAGENEWS,"")
         lifecycleScope.launch {
             viewModel.technoNews("f1a05bb7b5a44932b7859a0f75e8446d",newsLGChange!!,"technology").observe(viewLifecycleOwner){
-                when(it){
-                    is Resource.Loading ->{
-                        binding.recyclerView.visibility = View.GONE
-                        binding.shimmerViewContainer.visibility = View.VISIBLE
-                    }
-                    is Resource.Success ->{
-                        binding.recyclerView.visibility = View.VISIBLE
-                        binding.shimmerViewContainer.visibility = View.GONE
-                        (binding.recyclerView.adapter as TechnologyAdapter).submitList(it.data)
-                    }
-                    else -> {}
-                }
+                (binding.recyclerView.adapter as TechnologyAdapter).submitList(it.data)
             }
         }
     }

@@ -36,18 +36,7 @@ class SportFragment:BaseFragment<FragmentSportBinding>(R.layout.fragment_sport) 
 
         lifecycleScope.launch {
             viewModel.getNewsSport("f1a05bb7b5a44932b7859a0f75e8446d",newsLGChange!!,"sport").observe(viewLifecycleOwner){
-                when(it){
-                    is Resource.Loading ->{
-                        binding.recyclerView.visibility = View.GONE
-                        binding.shimmerViewContainer.visibility = View.VISIBLE
-                    }
-                    is Resource.Success ->{
-                        binding.recyclerView.visibility = View.VISIBLE
-                        binding.shimmerViewContainer.visibility = View.GONE
-                        (binding.recyclerView.adapter as SportAdapter).submitList(it.data)
-                    }
-                    else -> {}
-                }
+                (binding.recyclerView.adapter as SportAdapter).submitList(it.data)
             }
         }
     }

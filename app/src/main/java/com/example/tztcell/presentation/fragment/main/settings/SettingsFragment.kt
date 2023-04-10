@@ -14,7 +14,7 @@ class SettingsFragment:BaseFragment<FragmentSettingsBinding>(R.layout.fragment_s
 
     override fun initialize() {
         super.initialize()
-        val listOption = listOf("Тема оформления","Язык","Уведомления","Язык новостей")
+        val listOption = listOf("Язык","Уведомления","Язык новостей")
         binding.recyclerView.apply {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -29,9 +29,8 @@ class SettingsFragment:BaseFragment<FragmentSettingsBinding>(R.layout.fragment_s
 
     private fun changeOption(it: Int) {
         when(it){
-            0 ->{findNavController().navigateSafely(R.id.to_themesystem)}
-            1 ->{findNavController().navigateSafely(R.id.to_languagesystem)}
-            3 ->{findNavController().navigateSafely(R.id.to_languagenews)}
+            0 ->{findNavController().navigateSafely(R.id.to_languagesystem)}
+            2 ->{findNavController().navigateSafely(R.id.to_languagenews)}
         }
     }
 }

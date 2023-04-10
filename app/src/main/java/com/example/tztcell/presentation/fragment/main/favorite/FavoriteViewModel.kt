@@ -10,5 +10,5 @@ import javax.inject.Inject
 @HiltViewModel
 class FavoriteViewModel  @Inject constructor(private val favoriteNewsRepository: FavoriteNewsRepository) :ViewModel() {
     fun getAllNewsFavorite() = favoriteNewsRepository.getNewsFavotites()
-    suspend fun  deleteNewsFavorite(newsFavorite: NewsFavorite) = favoriteNewsRepository.insertMedicine(newsFavorite)
+    suspend fun  deleteNewsFavorite(newsFavorite: NewsFavorite) = favoriteNewsRepository.deleteNewsFavorite(newsFavorite)
 }

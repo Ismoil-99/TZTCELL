@@ -13,7 +13,7 @@ import com.example.tztcell.model.db.query.NewsQuery
 import com.example.tztcell.model.db.query.NewsQuerySport
 import com.example.tztcell.model.db.query.NewsQueryTechnology
 
-@Database(entities = [NewsDb::class,NewsSportDb::class,NewsTechnologyDb::class, NewsFavorite::class], version = 14, exportSchema = false)
+@Database(entities = [NewsDb::class,NewsSportDb::class,NewsTechnologyDb::class, NewsFavorite::class], version = 15, exportSchema = false)
 abstract class NewsDatabase : RoomDatabase() {
     abstract fun listNews(): NewsQuery
     abstract fun listNewsSport(): NewsQuerySport

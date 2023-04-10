@@ -15,5 +15,5 @@ interface NewsFavoriteQuery {
     suspend fun insertNewsFavorite(news: NewsFavorite)
 
     @Delete
-    suspend fun deleteMedicineInfo(news: NewsFavorite)
+    suspend fun deleteNewsFavorite(news: NewsFavorite)
 }

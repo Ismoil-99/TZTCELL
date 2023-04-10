@@ -20,7 +20,7 @@ class RepositoryImpl @Inject constructor (private val baseApiService: BaseApiSer
             newsDao.getNews()
         },
         fetch = {
-            delay(2000)
+            delay(1000)
             baseApiService.getNewsBusiness(key, country, category).articles
         },
         saveFetchResult = { CarList ->
@@ -36,7 +36,7 @@ class RepositoryImpl @Inject constructor (private val baseApiService: BaseApiSer
             newDaoSport.getNewsSport()
         },
         fetch = {
-            delay(2000)
+            delay(1000)
             baseApiService.getNewsSport(key, country, category).articles
         },
         saveFetchResult = { CarList ->
@@ -51,7 +51,7 @@ class RepositoryImpl @Inject constructor (private val baseApiService: BaseApiSer
             newsTechnology.getNewsTechnology()
         },
         fetch = {
-            delay(2000)
+            delay(1000)
             baseApiService.getNewsTechnology(key, country, category).articles
         },
         saveFetchResult = { CarList ->

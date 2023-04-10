@@ -38,18 +38,7 @@ class BusinessFragment:BaseFragment<FragmentBusinessBinding>(R.layout.fragment_b
         val newsLGChange =  NewsApp.sharedPreferences.getString(NAMELANGUAGENEWS,"")
         lifecycleScope.launch {
             viewModel.getNewsBusiness("f1a05bb7b5a44932b7859a0f75e8446d",newsLGChange!!,"business").observe(viewLifecycleOwner) {
-                when(it){
-                    is Resource.Loading ->{
-                        binding.recyclerView.visibility = View.GONE
-                        binding.shimmerViewContainer.visibility = View.VISIBLE
-                    }
-                    is Resource.Success ->{
-                        binding.recyclerView.visibility = View.VISIBLE
-                        binding.shimmerViewContainer.visibility = View.GONE
-                        (binding.recyclerView.adapter as BusinessAdapter).submitList(it.data)
-                    }
-                    else -> {}
-                }
+                (binding.recyclerView.adapter as BusinessAdapter).submitList(it.data)
             }
             }
         }

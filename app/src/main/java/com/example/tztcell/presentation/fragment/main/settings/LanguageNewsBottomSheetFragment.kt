@@ -20,20 +20,43 @@ class LanguageNewsBottomSheetFragment: BaseBottomSheet<FragmentLanguageNewsBotto
 
     override fun initialize() {
         super.initialize()
+        when(NewsApp.sharedPreferences.getString(NAMELANGUAGENEWS,"")){
+            "ru" -> {
+                binding.apply {
+                    ru.setImageResource(R.drawable.baseline_star_24)
+                    fr.setImageResource(R.drawable.baseline_star_outline_24)
+                    eng.setImageResource(R.drawable.baseline_star_outline_24)
+                }
+            }
+            "fr" -> {
+                binding.apply {
+                    ru.setImageResource(R.drawable.baseline_star_outline_24)
+                    fr.setImageResource(R.drawable.baseline_star_24)
+                    eng.setImageResource(R.drawable.baseline_star_outline_24)
+                }
+            }
+            "us" -> {
+                binding.apply {
+                    ru.setImageResource(R.drawable.baseline_star_outline_24)
+                    fr.setImageResource(R.drawable.baseline_star_outline_24)
+                    eng.setImageResource(R.drawable.baseline_star_24)
+                }
+            }
+            else -> {
+                binding.apply {
+                    ru.setImageResource(R.drawable.baseline_star_outline_24)
+                    fr.setImageResource(R.drawable.baseline_star_outline_24)
+                    eng.setImageResource(R.drawable.baseline_star_outline_24)
+                }
+            }}
 
         binding.frSelect.setOnClickListener {
             saveNews("fr")
         }
-        binding.caSelect.setOnClickListener {
-            saveNews("ca")
-        }
-        binding.unSelect.setOnClickListener {
-            saveNews("us")
-        }
         binding.ruSelect.setOnClickListener {
             saveNews("ru")
         }
-        binding.usSelect.setOnClickListener {
+        binding.unSelect.setOnClickListener {
             saveNews("us")
         }
     }

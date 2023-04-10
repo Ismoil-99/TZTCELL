@@ -41,6 +41,8 @@ class SportAdapter(
                         test.content,
                     test.publishedAt)
                     onSaveFavoriteNews.invoke(convert)
+                    notifyDataSetChanged()
+                    onsaveNewsFavorite.setImageResource(R.drawable.baseline_star_24)
                 }
                 contentSport.text = test.content
                 headerTitleSport.text = test.title

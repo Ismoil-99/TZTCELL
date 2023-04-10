@@ -8,27 +8,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         tools:listitem="@layout/list_business"
         />
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_view_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:visibility="visible"
-        android:layout_marginTop="10dp"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <include layout="@layout/shimmer_layout" />
-            <include layout="@layout/shimmer_layout" />
-            <include layout="@layout/shimmer_layout" />
-            <include layout="@layout/shimmer_layout" />
-            <include layout="@layout/shimmer_layout" />
-
-        </LinearLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
 </LinearLayout>

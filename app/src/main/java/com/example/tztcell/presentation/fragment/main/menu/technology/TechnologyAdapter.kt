@@ -43,6 +43,8 @@ class TechnologyAdapter(
                         test.publishedAt
                     )
                     onSaveFavoriteNews.invoke(convert)
+                    notifyDataSetChanged()
+                    onsaveNewsFavorite.setImageResource(R.drawable.baseline_star_24)
                 }
                 contentTechnology.text = test.content
                 headerTitleTechnology.text = test.title

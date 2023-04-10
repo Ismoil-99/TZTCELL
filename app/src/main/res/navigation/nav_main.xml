@@ -30,12 +30,6 @@
         tools:layout="@layout/fragment_change_language_bottomsheet"
         />
     <dialog
-        android:id="@+id/themeBottomSheetFragment"
-        android:name="com.example.tztcell.presentation.fragment.main.settings.ThemeBottomSheetFragment"
-        android:label="ThemeBottomSheetFragment"
-        tools:layout="@layout/fragment_change_language_bottomsheet"
-        />
-    <dialog
         android:id="@+id/changeLanguageBottomSheetFragment"
         android:name="com.example.tztcell.presentation.fragment.main.settings.ChangeLanguageBottomSheetFragment"
         android:label="ChangeLanguageBottomSheetFragment"
@@ -49,9 +43,5 @@
     <action
         android:id="@+id/to_languagesystem"
         app:destination="@+id/changeLanguageBottomSheetFragment"
-        />
-    <action
-        android:id="@+id/to_themesystem"
-        app:destination="@+id/themeBottomSheetFragment"
         />
 </navigation>

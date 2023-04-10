@@ -10,5 +10,5 @@ class FavoriteNewsRepository @Inject constructor(private val newsFavoriteQuery: 
 
     suspend fun insertMedicine(newsFavorite: NewsFavorite) = newsFavoriteQuery.insertNewsFavorite(newsFavorite)
 
-    suspend fun deleteNewsFavorite(news: NewsFavorite) = newsFavoriteQuery.deleteMedicineInfo(news)
+    suspend fun deleteNewsFavorite(news: NewsFavorite) = newsFavoriteQuery.deleteNewsFavorite(news)
 }

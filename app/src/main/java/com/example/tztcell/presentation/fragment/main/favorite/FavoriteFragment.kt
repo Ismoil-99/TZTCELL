@@ -11,6 +11,7 @@ import com.example.tztcell.presentation.fragment.main.menu.business.BusinessAdap
 import com.example.tztcell.presentation.fragment.main.menu.business.BusinessViewModel
 import com.example.tztcell.presentation.fragment.main.menu.technology.TechnologyAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -25,7 +26,11 @@ class FavoriteFragment:BaseFragment<FragmentFavoriteBinding>(R.layout.fragment_f
         super.initialize()
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
-            adapter = AdapterFavorite()
+            adapter = AdapterFavorite{
+                lifecycleScope.launch (Dispatchers.IO){
+                    viewModel.deleteNewsFavorite(it)
+                }
+            }
         }
         lifecycleScope.launch {
             viewModel.getAllNewsFavorite().collectLatest {
